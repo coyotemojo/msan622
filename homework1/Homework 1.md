@@ -1,55 +1,16 @@
 Homework 1: Basic Charts
 ==============================
 
-For this assignment, you will practice using `R` and `ggplot2` to generate several basic charts, including a scatterplot, bar chart, small multiples plot, and multi-line plot.
-
-:warning: Your charts may be displayed and discussed in class. Please make sure to **not** include your name on the charts themselves to protect your identity.
-
-Setup
-------------------------------
-
-This assignment will use the `movies` dataset in the `ggplot2` package and the `EuStockMarkets` dataset. You will need to perform some transformations of these datasets first to prepare for the visualizations.
-
-Use the following code to load the datasets:
-
-```
-library(ggplot2) 
-data(movies) 
-data(EuStockMarkets)
-```
-
-Then, perform the following transformations:
-
-- Filter out any rows that have a `budget` value less than or equal to 0 in the `movies` dataset. 
-
-- Add a `genre` column to the `movies` dataset as follows:
-  ```
-  genre <- rep(NA, nrow(movies))
-  count <- rowSums(movies[, 18:24])
-  genre[which(count > 1)] = "Mixed"
-  genre[which(count < 1)] = "None"
-  genre[which(count == 1 & movies$Action == 1)] = "Action"
-  genre[which(count == 1 & movies$Animation == 1)] = "Animation"
-  genre[which(count == 1 & movies$Comedy == 1)] = "Comedy"
-  genre[which(count == 1 & movies$Drama == 1)] = "Drama"
-  genre[which(count == 1 & movies$Documentary == 1)] = "Documentary"
-  genre[which(count == 1 & movies$Romance == 1)] = "Romance"
-  genre[which(count == 1 & movies$Short == 1)] = "Short"
-  ```
-
-- Transform the `EuStockMarkets` dataset to a time series as follows:
-  ```
-  eu <- transform(data.frame(EuStockMarkets), time = time(EuStockMarkets))
-  ```
-
-At this point, you are ready to start working on the visualizations.
-
 Visualizations
 ------------------------------
 
 You must create the following plots in a single `R` script:
 
 - **Plot 1: Scatterplot.** Produce a scatterplot from the `movies` dataset in the `ggplot2` package, where `budget` is shown on the x-axis and `rating` is shown on the y-axis. Save the plot as `hw1-scatter.png`.
+
+![scatter plot](hw1-scatter.png)
+
+In the scatter plot I explored several parameters.  First, I noticed that many of the points overlap one another, so I played with the size of the point, the transparency of the point, and the shape of the point.   I also investigated using a log scale on the x axis so that the points would be more spread out, but I decided that the additional congnitive step required to understand the relationship of movie budget on the log scale was not worth the the insight 
 
 - **Plot 2: Bar Chart.** Count the number of action, adventure, etc. movies in the `genre` column of the `movies` dataset. Show the results as a bar chart, and save the chart as `hw1-bar.png`.
 
