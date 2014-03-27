@@ -3,6 +3,8 @@ setwd('~/Documents/msan/classes/data_visualization/msan622/homework1/')
 library(ggplot2)
 library(scales)
 library(reshape2)
+library(knitr)
+
 data(movies)
 data(EuStockMarkets)
 
@@ -23,8 +25,8 @@ movies <- cbind(movies, genre)
 
 #Create a scatterplot of movie ratings vs.  movie budget
 scatter <- ggplot(movies, aes(x=budget, y=rating)) +
-  geom_point(size=1, alpha=.75, color='#7fc97f') +
-  xlab('Budget (Millions)') +
+  geom_point(size=1, alpha=.75, color='#7fc97f', shape=1) +
+  xlab('Budget in Millions, USD') +
   ylab('Rating') +
   ggtitle('Movie Ratings vs. Budget') + 
   #scale_x_continuous(trans=log10_trans(), 
@@ -32,9 +34,11 @@ scatter <- ggplot(movies, aes(x=budget, y=rating)) +
   #                   labels = dollar) +
   scale_x_continuous(breaks = seq(0, 200000000, 50000000), 
                      labels = c('$0', '$50', '$100', '$150', '$200')) +
-  scale_y_continuous(breaks = seq(0,10,1)) +
-  theme(panel.grid.minor=element_blank())  +
-  ggsave(filename = 'hw1-scatter.png', scale=1.8, width = 9, height = 4.25, 
+  scale_y_continuous(breaks = seq(0,10,2)) +
+  theme(panel.grid.minor=element_blank(),
+        axis.text.x  = element_text(size=9, color='black'),
+        axis.text.y  = element_text(size=9, color='black'))  +
+  ggsave(filename = 'hw1-scatter.png', scale=1.8, width = 4, height = 3, 
          dpi = 300, bg = "transparent", units='in')
 scatter
 
@@ -47,15 +51,20 @@ bar <- ggplot(movies, aes(x=genre)) +
   xlab('Genre') +
   ylab('Frequency') +
   scale_y_continuous(labels=comma) +
-  ggtitle('Frequency of Movies by Genre') +
-  theme(axis.ticks.x = element_blank(), panel.grid.major.x = element_blank()) +
-  ggsave(filename = 'hw1-bar.png', scale=1.8, width = 9, height = 4.25, 
+  ggtitle('Count of Movies by Genre') +
+  theme(axis.ticks.x = element_blank(), 
+        panel.grid.major.x = element_blank(),
+        axis.title.x=element_blank(),
+        axis.title.y=element_blank(),
+        axis.text.x  = element_text(size=9, color='black'),
+        axis.text.y  = element_text(size=9, color='black')) +
+  ggsave(filename = 'hw1-bar.png', scale=1.8, width = 4, height = 3, 
          dpi = 300, bg = "transparent", units='in')
 bar
 
 facet_plot <- scatter + 
   facet_wrap(~ genre) +
-  ggsave(filename = 'hw1-multiples.png', scale=1.8, width = 9, height = 4.25, 
+  ggsave(filename = 'hw1-multiples.png', scale=1.8, width = 4, height = 3, 
          dpi = 300, bg = "transparent", units='in')
 facet_plot
 
@@ -67,21 +76,20 @@ eu$Var1 <- NULL
 names(eu)[2] <- 'Index'
 
 ggplot(eu, aes(x=time, y=value, group=Index, color=Index)) + 
-  geom_line(alpha=.75, size=.5) + 
+  geom_line(alpha=.75, size=.5, linetype='dotdash') + 
   ylab('Closing Value') + 
   scale_y_continuous(labels = comma) +
   theme(axis.title.x=element_blank(), axis.title.y=element_blank()) +
   scale_x_continuous(breaks = c(seq(1992, 1999))) +
-  ggtitle('Daily Closing Prices of European Stock Indices') +
-  theme(legend.position = c(.025, .9), 
+  ggtitle('Daily Closing Value of European Stock Indices') +
+  theme(legend.position = c(.05, .9), 
        legend.justification = c(.025, .9), 
-       legend.background = element_rect(colour = NA, fill = "white")) +
-  ggsave(filename = 'hw1-multiline.png', scale=1.8, width = 9, height = 4.25, 
+       legend.background = element_rect(colour = NA, fill = "white", size=.5),
+       axis.text.x  = element_text(size=9, color='black'),
+       axis.text.y  = element_text(size=9, color='black')) +
+       #legend.key.size = unit(2)) +
+  ggsave(filename = 'hw1-multiline.png', scale=1.8, width = 4.5, height = 3, 
          dpi = 300, bg = "transparent", units='in')
-
-
-eu_melted <- cbind(eu_melted, rep(test, 4))
-ggplot(eu, aes(x=rep(test, 4), y='Closing Value', group = Index, color=Index)) + geom_line()
 
 
 
