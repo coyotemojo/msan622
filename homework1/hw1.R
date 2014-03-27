@@ -76,7 +76,7 @@ eu$Var1 <- NULL
 names(eu)[2] <- 'Index'
 
 ggplot(eu, aes(x=time, y=value, group=Index, color=Index)) + 
-  geom_line(alpha=.75, size=.5, linetype='dotdash') + 
+  geom_line(alpha=.75, size=1) + 
   ylab('Closing Value') + 
   scale_y_continuous(labels = comma) +
   theme(axis.title.x=element_blank(), axis.title.y=element_blank()) +
