@@ -21,21 +21,21 @@ genre[which(count == 1 & movies$Romance == 1)] = "Romance"
 genre[which(count == 1 & movies$Short == 1)] = "Short"
 movies <- cbind(movies, genre)
 
-
-
-
+#Create a scatterplot of movie ratings vs.  movie budget
 scatter <- ggplot(movies, aes(x=budget, y=rating)) +
-  geom_point(size=1, alpha=.9, color='blue') +
-  xlab('Budget (Log Scale)') +
+  geom_point(size=1, alpha=.75, color='#7fc97f') +
+  xlab('Budget (Millions)') +
   ylab('Rating') +
-  ggtitle('Movie Ratings by Budget') + 
-  scale_x_continuous(trans=log10_trans(), 
-                     breaks = trans_breaks("log10", function(x) 10^x), 
-                     labels = dollar) +
+  ggtitle('Movie Ratings vs. Budget') + 
+  #scale_x_continuous(trans=log10_trans(), 
+  #                   breaks = trans_breaks("log10", function(x) 10^x), 
+  #                   labels = dollar) +
+  scale_x_continuous(breaks = seq(0, 200000000, 50000000), 
+                     labels = c('$0', '$50', '$100', '$150', '$200')) +
   scale_y_continuous(breaks = seq(0,10,1)) +
-  theme(panel.grid.minor=element_blank()) +
-  ggsave(filename = 'hw1-scatter.png.', scale=1.8, width = 4, height = 3, 
-         dpi = 150, bg = "transparent")
+  theme(panel.grid.minor=element_blank())  +
+  ggsave(filename = 'hw1-scatter.png', scale=1.8, width = 9, height = 4.25, 
+         dpi = 300, bg = "transparent", units='in')
 scatter
 
 #order the genre factor by frequency so bar chart is sorted
@@ -43,22 +43,24 @@ movies <- transform(movies, genre = ordered(genre,
           levels = names(sort(table(movies$genre), decreasing=TRUE))))
 
 bar <- ggplot(movies, aes(x=genre)) +
-  geom_bar(colour='black', fill = '#FF9999',stat='bin') +
+  geom_bar(color = 'black', fill = '#beaed4',stat='bin') +
   xlab('Genre') +
-  ylab('Count') +
-  scale_y_continuous(labels=comma)
-  ggtitle('Frequency of Movies by Genre')
+  ylab('Frequency') +
+  scale_y_continuous(labels=comma) +
+  ggtitle('Frequency of Movies by Genre') +
+  theme(axis.ticks.x = element_blank(), panel.grid.major.x = element_blank()) +
+  ggsave(filename = 'hw1-bar.png', scale=1.8, width = 9, height = 4.25, 
+         dpi = 300, bg = "transparent", units='in')
 bar
 
 facet_plot <- scatter + 
-  facet_wrap(~ genre)
+  facet_wrap(~ genre) +
+  ggsave(filename = 'hw1-multiples.png', scale=1.8, width = 9, height = 4.25, 
+         dpi = 300, bg = "transparent", units='in')
 facet_plot
 
 
 ## eu stock markets
-#eu <- transform(data.frame(test), time = time(test))
-
-
 eu <- melt(EuStockMarkets)
 eu <- transform(eu, time=rep(time(EuStockMarkets),4))
 eu$Var1 <- NULL
@@ -70,7 +72,12 @@ ggplot(eu, aes(x=time, y=value, group=Index, color=Index)) +
   scale_y_continuous(labels = comma) +
   theme(axis.title.x=element_blank(), axis.title.y=element_blank()) +
   scale_x_continuous(breaks = c(seq(1992, 1999))) +
-  ggtitle('Daily Closing Prices of European Stock Indices')
+  ggtitle('Daily Closing Prices of European Stock Indices') +
+  theme(legend.position = c(.025, .9), 
+       legend.justification = c(.025, .9), 
+       legend.background = element_rect(colour = NA, fill = "white")) +
+  ggsave(filename = 'hw1-multiline.png', scale=1.8, width = 9, height = 4.25, 
+         dpi = 300, bg = "transparent", units='in')
 
 
 eu_melted <- cbind(eu_melted, rep(test, 4))
