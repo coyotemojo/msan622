@@ -7,8 +7,20 @@ Homework 1: Basic Charts
 
 ## Instructions ##
 
-[INSTRUCTIONS: Include instructions on how to run your code. See [`homework0`](../homework0) for an example.]
+The following packages must be installed prior to running this code:
+
+- `ggplot2`
+- `scales`
+- `reshape2`
+
+To run this code, please enter the following commands in R:
+
+```
+source_url("https://github.com/coyotemojo/msan622/blob/master/homework1/hw1.R")
+```
+
+This will generate 4 images.  
 
 ## Discussion ##
 
-[DISCUSSION: Include a discussion here if required by the assignment.]
+Please see discussion of the images here: [Homework 1 Discussion](https://github.com/coyotemojo/msan622/blob/master/homework1/Homework%201.md)
