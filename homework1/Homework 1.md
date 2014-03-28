@@ -16,7 +16,7 @@ In the scatter plot I explored several parameters.  First, I noticed that many o
 
 ![scatter plot](hw1-bar.png)
 
-For the bar plot I first sorted the genres by decreasing counts so that the most frequent genre would show up on the left-hand side of the plot.  Then I set about removing as much 'chart junk' as possible, such as the axis titles, the x axis tick marks, and the x axis gridlines.  I also chose a complementary color from the same colorbrewer palette as the scatter plot above for all genres and decided against coloring each bar differently, since doing so wouldn't add any information to the plot.  Finally, I shrank the size of the axis label text so that the 'documentary' label wasn't so crowded by adjacent labels.  
+For the bar plot I first sorted the genres by decreasing counts so that the most frequent genre would show up on the left-hand side of the plot.  Then I set about removing as much 'chart junk' as possible, such as the axis titles, the x axis tick marks, and the x axis gridlines.  I also chose a complementary color from the same colorbrewer palette as the scatter plot above for all genres and decided against coloring each bar differently, since doing so wouldn't add any information to the plot.  I removed the padding at the bottom of the bars, and inally, I shrank the size of the axis label text so that the 'documentary' label wasn't so crowded by adjacent labels.  
 
 - **Plot 3: Small Multiples.** Use the `genre` column in the `movies` dataset to generate a small-multiples scatterplot using the `facet_wrap()` function such that `budget` is shown on the x-axis and `rating` is shown on the y-axis. Save the plot as `hw1-multiples.png`.
 
