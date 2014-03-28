@@ -22,27 +22,10 @@ For the bar plot I first sorted the genres by decreasing counts so that the most
 
 ![scatter plot](hw1-multiples.png)
 
+For the small multiples plot, the main issue I faced was making sure the x axis labels weren't crowding eachother.  I adjusted those in the main scatter plot above so that the labels appeared clearly in the multiples plot.  Otherwise, I didn't change too much on the collection of small plots as I felt that I had addressed the most glaring needs of the scatterplot in the first scatterplot.
+
 - **Plot 4: Multi-Line Chart.** Produce a multi-line chart from the `eu` dataset (created by transforming the `EuStockMarkets` dataset) with `time` shown on the x-axis and `price` on the y-axis. Draw one line for each index on the same chart. Save the plot as `hw1-multiline.png`.
 
-  You will need to perform some additional transformations of the dataset before being able to generate this chart. See the multi-line plot code from class for an example.
+![scatter plot](hw1-multiline.png)
 
-For each chart, use `ggsave()` to save each chart as a `png` image. Make sure to set a reasonable width and height.
-
-To receive full points, you are required to add an appropriate chart title and axis labels to your charts *and* use color consistently in your charts. Optionally, consider the other aesthetic aspects of your chart. Play around with the settings for the major/minor tick marks, colors, shape, text, and the legend. 
-
-:warning: You will not receive full points if you only specify the data and use all the default values for the other parameters.
-
-Discussion
-------------------------------
-
-In your discussion, include each of the four images generated and a brief discussion following each image about the customization performed. For example, how did you use color? Why did you move the legend? (And so on.) The discussion for each image should be limited to a single paragraph with approximately 3 to 5 sentences.
-
-Submission
-------------------------------
-
-Place all of your `R` code in a single file, and include it and all generated images in a `homework1` directory within your `msan622` repository on GitHub. Make sure to include a `README.md` file with your name, USF email, instructions on running your code, and brief discussion.
-
-After all of the necessary files are pushed to your repository, submit a link to your `homework1` directory on Canvas.
-
-:warning: Please note that late submissions are not accepted. GitHub shows when you modified a file, so be sure not to modify your code after the deadline!
 
