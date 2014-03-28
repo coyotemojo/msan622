@@ -25,7 +25,8 @@ movies <- cbind(movies, genre)
 
 #Create a scatterplot of movie ratings vs.  movie budget
 scatter <- ggplot(movies, aes(x=budget, y=rating)) +
-  geom_point(size=1, alpha=.75, color='#7fc97f', shape=1) +
+  geom_point(size=1, alpha=.75, color='#7fc97f', shape=1,
+             position=position_jitter(width=1,height=.5)) +
   xlab('Budget in Millions, USD') +
   ylab('Rating') +
   ggtitle('Movie Ratings vs. Budget') + 
@@ -50,10 +51,12 @@ bar <- ggplot(movies, aes(x=genre)) +
   geom_bar(color = 'black', fill = '#beaed4',stat='bin') +
   xlab('Genre') +
   ylab('Frequency') +
-  scale_y_continuous(labels=comma) +
+  scale_y_continuous(labels=comma,
+                     expand = c(0,50)) +
   ggtitle('Count of Movies by Genre') +
   theme(axis.ticks.x = element_blank(), 
         panel.grid.major.x = element_blank(),
+        panel.grid.minor.y = element_blank(),
         axis.title.x=element_blank(),
         axis.title.y=element_blank(),
         axis.text.x  = element_text(size=9, color='black'),
