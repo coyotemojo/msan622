@@ -28,4 +28,6 @@ For the small multiples plot, the main issue I faced was making sure the x axis 
 
 ![scatter plot](hw1-multiline.png)
 
+For the multiline plot, I again removed both axis titles as I felt that they were redundant given the chart title.  I also again changed the axis label font colors to black and change the value on the y axis to comma format, and I change the breaks on the x axis so that only individual years from 1992 to 1999 were displayed.  The default line colors supplied by ggplot seemed appealing enough, so I left the alone.  I did however change the transparency and line sizes since the lines sometimes overlappe with eachother - I wanted all series to be visible and clearly identifiable by line color.  Finally, I moved the legend from the side of the plot onto the plot area, since there was a large open space on the left-hand side of the plot area. 
+
 
