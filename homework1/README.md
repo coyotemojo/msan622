@@ -1,9 +1,9 @@
 Homework 1: Basic Charts
 ==============================
 
-| **Name**  | [YOUR NAME]  |
+| **Name**  | Jason Ament  |
 |----------:|:-------------|
-| **Email** | [USERNAME]@dons.usfca.edu |
+| **Email** | jeament@dons.usfca.edu |
 
 ## Instructions ##
 
