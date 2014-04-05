@@ -34,9 +34,9 @@ This is an interactive visualization of the movies dataset using the shiny R pac
   * Made tick marks, axis titles and text all black to stand out better against the white background
   * Increased the size of the axis titles so that they were more visible
   * Set y label breaks to 0 through 10 so that all movies would be visible in the context of all possible ratings values.
-  * Set x label breaks to be fairly spares and formatted to millions, with a $ and M around the numbers
+  * Set x label breaks to be fairly sparse and formatted to millions, with a $ and M around the numbers
   * Moved axis titles a little away from the axes themselves to avoid crowding
-* Many tweaks to the legeng:
+* Many tweaks to the legend:
   * Moved the legend into the lower-righthand corner of the plot area which is always unused by data points
   * Made legend horizontal, increased the size of both the legend title and legend text to improve readability, removed background fill so that legend would blend in better with the plot
   * Changed title to "MPAA Rating" instead of "mpaa," which is how the field is labeled in the dataset to improve readability and context
