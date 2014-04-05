@@ -48,7 +48,7 @@ getPlot <- function (movies, incRatings, incGenres, cpalette, dotSize, dotAlpha,
   p <- p + ylab('Rating')
   
   if (scale == TRUE) {
-    p <- p + scale_x_log10(labels = dollar, expand=c(0.01,.1))
+    p <- p + scale_x_log10(labels = dollar, expand=c(0.01,.1), breaks = trans_breaks("log10", function(x) 10^x))
     p <- p + xlab('Budget (Log Scale)')
   }
   else {
