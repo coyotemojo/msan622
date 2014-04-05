@@ -1,9 +1,9 @@
 Homework 2: Interactivity
 ==============================
 
-| **Name**  | [YOUR NAME]  |
+| **Name**  | Jason Ament  |
 |----------:|:-------------|
-| **Email** | [USERNAME]@dons.usfca.edu |
+| **Email** | jeament@dons.usfca.edu |
 
 ## Instructions ##
 
@@ -16,11 +16,12 @@ To run this code, please enter the following commands in R:
 
 ```
 library(shiny)
-shiny::runGitHub('msan622', '[USERNAME]', 'homework2')
+shiny::runGitHub('msan622', 'coyotemojo', 'homework2')
 ```
 
 This will start the `shiny` app. See below for details on how to interact with the visualization.
 
 ## Discussion ##
+![movies scatter plot](shiny-scatter.png)
 
-[DISCUSSION: Include a discussion here if required by the assignment.]
+This is a visualization of the movies dataset, 
