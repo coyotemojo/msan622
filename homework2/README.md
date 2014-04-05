@@ -22,7 +22,7 @@ shiny::runGitHub('msan622', 'coyotemojo', 'homework2')
 This will start the `shiny` app. See below for details on how to interact with the visualization.
 
 ## Discussion ##
-![movies scatter plot](shiny-scatter.png)
+![movies scatter plot](shiny_scatter.png)
 
 This is an interactive visualization of the movies dataset using the shiny R package.  For the most part, this visualization meets the basic requirements of the assignment along with a host of tweaks to various cosmetic elements of the plot.  The cosmetic adjustments are listed here:
 * No plot title, since the heading of the shiny panel works as an overall title for the page
