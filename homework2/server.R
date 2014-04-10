@@ -1,6 +1,7 @@
 library(ggplot2)
 library(shiny)
 require(grid)
+require(scales)
 
 loadData <- function() {
   data("movies", package = "ggplot2")
