@@ -3,6 +3,7 @@ library(reshape)
 library(plyr)
 library(scales)
 
+
 # This is based on the following example:
 # http://learnr.wordpress.com/2010/01/26/ggplot2-quick-heatmap-plotting/
 
