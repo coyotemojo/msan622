@@ -1,20 +1,19 @@
 library(ggplot2)
 library(shiny)
+library(GGally)
 require(grid)
 library(reshape)
+library(scales)
 
 loadData <- function(){
   #load the data
-  state_data <- data.frame(state.x77,
-                           State = state.name,
-                           Abbrev = state.abb,
-                           Region = state.region,
-                           Division = state.division)
+  state_data <- data.frame(state.x77)
   #get rid of 'categorical' data
   state_data <- state_data[,1:8]
   state_data <- rescaler(state_data, type='range')
-  state_data$State <- state.abb
-  colnames(state_data) <- gsub("\\.", " ", colnames(state_data))
+  state_data$State <- state.name
+  state_data$Region <- state.region
+  colnames(state_data) <- gsub("\\.", "", colnames(state_data))
   return(state_data)
 }
 
@@ -26,21 +25,21 @@ getSorted <- function (original, melted, sort_var1) {
   return(melted)
 }
 
-getHeatmap <- function (df, incVars, midrange, sort_var1) {
-  melted_df <- melt(df,id.vars='State')
+getHeatmap <- function (df, incVars, midrange, sort_var1, highlight) {
+  melted_df <- melt(df,id.vars=c('State', 'Region'))
   sorted_df <- getSorted(df, melted_df, sort_var1)
-  p <- ggplot(subset(sorted_df, sorted_df$variable %in% incVars), 
+  sorted_df$variable <- relevel(sorted_df$variable, sort_var1)
+  p <- ggplot(subset(sorted_df, variable %in% incVars & Region %in% highlight), 
               aes(x=State, y=variable))
   p <- p + geom_tile(aes(fill = value), colour = "white")
   p <- p + theme_minimal()
-  # remove axis titles, tick marks, and grid
   p <- p + theme(axis.title = element_blank())
   p <- p + theme(axis.ticks = element_blank())
   p <- p + theme(panel.grid = element_blank())
-  # remove legend (since data is scaled anyway)
   p <- p + theme(legend.position = "none")
-  #p <- p + coord_flip()
-  palette <- c("#008837", "#f7f7f7", "#f7f7f7", "#7b3294")
+  p <- p + coord_flip()
+  #p <- p + ggtitle('')
+  palette <- c("#ef8a62", "#f7f7f7", "#f7f7f7", "#67a9cf")
   if(midrange[1] == midrange[2]) {
     # use a 3 color gradient instead
     p <- p + scale_fill_gradient2(low = palette[1], mid = palette[2], high = palette[4], midpoint = midrange[1])
@@ -52,9 +51,81 @@ getHeatmap <- function (df, incVars, midrange, sort_var1) {
   return(p)
 }
 
+getScatter <- function (df, incVars, highlight) {
+  p <- ggpairs(subset(df, Region %in% highlight), 
+  # Columns to include in the matrix
+  columns = c('Illiteracy', 'Murder', 'HSGrad', 'Frost'),
+  #columns = incVars,
+               
+  # What to include above diagonal
+  # list(continuous = "points") to mirror
+  # "blank" to turn off
+  upper = "blank",
+               
+  # What to include below diagonal
+  lower = list(continuous = "smooth"),
+               
+  # What to include in the diagonal
+  diag = list(discrete = "bar"),
+               
+  # How to label inner plots
+  # internal, none, show
+  axisLabels = "none",
+               
+  # Other aes() parameters
+  colour = "Region",
+  )
+  #p <- p + scale_color_manual(values = region_palette, limits=levels(df$Regions))
+
+  for (i in 1:4) {
+    for (j in 1:4) {
+      # Get plot out of matrix
+      inner = getPlot(p, i, j);
+    
+      # Add any ggplot2 settings you want
+      inner = inner + theme(panel.grid = element_blank());
+      inner <- inner + scale_color_manual(values = region_palette, limits=levels(df$Region))
+    
+      # Put it back into the matrix
+      p <- putPlot(p, inner, i, j);
+    }
+  }
+  return(p)
+}
+
+getParallel <- function(df, incVars, highlight) {
+  df$alphaLevel <- .1
+  df$alphaLevel[which(df$Region %in% highlight)] <- .6
+  p <- ggparcoord(data = df,
+  #columns = c('Illiteracy', 'Murder', 'HSGrad', 'Frost'), 
+  columns = incVars,
+  groupColumn = 'Region', 
+  # Allows order of vertical bars to be modified
+  order = "anyClass",                
+  # Do not show points
+  showPoints = FALSE,
+  # Turn on alpha blending for dense plots
+  #alphaLines = 0.6,     
+  # Turn off box shading range
+  shadeBox = NULL,                
+  # Will normalize each column's values to [0, 1]
+  scale = "uniminmax", # try "std" also
+  alphaLines = "alphaLevel",
+  #show_guide(alphaLines = FALSE)
+  )
+  #p <- p + show_guide(linetype =   FALSE)
+  p <- p + scale_y_continuous(expand = c(0.02, 0.02))
+  p <- p + scale_x_discrete(expand = c(0.02, 0.02))
+  p <- p + theme(axis.title = element_blank())
+  p <- p + theme(legend.position = "bottom")
+  p <- p + scale_color_manual(values = region_palette, limits=levels(df$Region))
+  return(p)
+}
+
 #shared data
 globalData <- loadData()
 midrange <- c(.3,.7)
+region_palette <- c("Northeast" = "#1B9E77", "South" = "#D95F02", "North Central" = "#7570B3", "West" = "#E7298A")
 
 shinyServer(function(input, output) {
   
@@ -70,6 +141,16 @@ shinyServer(function(input, output) {
     }
   })
   
+  regionChooser <- reactive({
+    regions <- levels(globalData$Region)
+    if (input$highlightRegion == "All") {
+      return(regions)
+    }
+    else {
+      return(input$highlightRegion)
+    }
+  })
+  
   sortChooser <- reactive({
     return(input$sortVar)
   })
@@ -79,10 +160,33 @@ shinyServer(function(input, output) {
     heatMap <- getHeatmap(
       localFrame,
       varsFilter(),
-      midrange,
-      sortChooser()
+      input$range,
+      sortChooser(),
+      regionChooser()
     )
     # Output the plot
     print(heatMap)
+  })
+  
+  output$scatterPlotMatrix <- renderPlot({
+    # Use our function to generate the plot.
+    scatterPlot <- getScatter(
+      localFrame,
+      varsFilter(),
+      regionChooser()
+    )
+    # Output the plot
+    print(scatterPlot)
+  })
+  
+  output$parallelCoord <- renderPlot({
+    # Use our function to generate the plot.
+    parallelPlot <- getParallel(
+      localFrame,
+      varsFilter(),
+      regionChooser()
+    )
+    # Output the plot
+    print(parallelPlot)
   })
 })
