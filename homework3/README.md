@@ -31,6 +31,12 @@ This will start the `shiny` app. See below for details on how to interact with t
 
 ![technique1](heatmap.png)
 
+I chose the heatmap because I had never created anything simlar to a heatmap before, and I thougth that Sophie's example in class was rather striking.  I chose to include all columns in the heatmap initially, but I allow the user to select which columns should be depicted, so if the user is interested in specific variables he/she can focus on those specifically and remove the ones of less interest.  In this case, the data is scaled by range, so in each column the state with the lowest value gets the most intense color for low values (orange in this case) and the state with the highest value gets the most intense color for the high values (blue in this case).
+
+In terms of customization, I essentially removed all unnecessary markings, including tick marks and title, and used a minimal theme essentially similar to Sophie's example.  I also changed the color palette, and I flipped the coordinates since I felt it would be easier to read the individual state names if they were written horizontally.  I also decided to use the full state names instead of abbreviations since I felt that they were just easier to recognize.  
+
+In terms of what the plot reveals in the data, the initial view includes all columns and all regions, with the states ordered from top to bottom in increasing order of population.  I think the heatmap has an interesting visual impact overall that draws the viewer in to start playing with the interactive portions.  Initially, the main impact is to see how few high-population states there actually are.
+
 [DISCUSSION]
 
 ### Technique 2: Scatterplot Matrix ###
