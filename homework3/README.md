@@ -1,13 +1,29 @@
 Homework [#]: [HOMEWORK NAME]
 ==============================
 
-| **Name**  | [YOUR NAME]  |
+| **Name**  | Jason Ament |
 |----------:|:-------------|
-| **Email** | [USERNAME]@dons.usfca.edu |
+| **Email** | jeament@dons.usfca.edu |
 
 ## Instructions ##
 
-[INSTRUCTIONS: Include instructions on how to run your code.]
+The following packages must be installed prior to running this code:
+
+- `ggplot2`
+- `shiny`
+- `GGally`
+- `grid`
+- `reshape`
+- `scales`
+
+To run this code, please enter the following commands in R:
+
+```
+library(shiny)
+shiny::runGitHub('msan622', 'coyotemojo', 'homework3')
+```
+
+This will start the `shiny` app. See below for details on how to interact with the visualization.
 
 ## Discussion ##
 
