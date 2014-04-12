@@ -50,7 +50,9 @@ I think that the scatter plot matrix immediatley communicates some interesting r
 
 ![technique3](parallel.png)
 
-For the third technique, I chose the
+For the third technique, I chose the parallel coordinates plot mainly because I had to.  But I also wanted to use this technique because I had never done so (or really even recalled seeing it before).  For this plot, I again grouped the states by region (and maintained the same color associations from the scatter plot matrix).  I also included all variables by default as I felt it made a more striking visual impact, but I gave the viewer the ability to remove variables for easier explanation.  
+
+I think the plot is an immediately striking plot that, similar to the heatmap, draws the user in for interaction.  As I provided the ability to highlight by region and add/remove variables, I think a viewer could spend some time exploring and learning about the characteristics of the various states.  
 
 ### Interactivity ###
 
