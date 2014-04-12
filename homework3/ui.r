@@ -42,17 +42,20 @@ shinyUI(fluidPage
     column(3,
       conditionalPanel(
         condition = "input.tab == 'Heatmap'",
+        wellPanel(
         radioButtons(
               "sortVar",
               "Variable to sort by:",
               c("Population", "Income", "Illiteracy", "LifeExp", "Murder", "HSGrad", "Frost", "Area"),
               selected = "Population"
              ) 
+        )
       )
     ),
     column(9,
       conditionalPanel(
         condition = "input.tab == 'Heatmap'",
+        div("Low values are orange, mid values are white, and high values are blue.", align = "center"),     
         wellPanel(
           sliderInput(
             "range",

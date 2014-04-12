@@ -3,14 +3,15 @@ library(shiny)
 library(grid)
 
 state_data <- data.frame(state.x77,
-                         State = state.abb,
+                         State = state.name,
+                         #Abbrev = state.abb,
                          Region = state.region)
 
 
-p <- ggplot(df, aes(
+p <- ggplot(state_data, aes(
             x = Population,
             y = Income,
-            color = Division,
+            color = Region,
             size = Murder))
 
 p <- p + geom_point()
@@ -18,10 +19,10 @@ p #bubble plot is pretty easy - not sure how informative it is in this case
 
 
 #work on heat map
-getHeatmap <- function (df, incVars, midrange, sort_var1) {
+getHeatmap <- function (df, incVars, midrange, sort_var1,highlight) {
   melted_df <- melt(df,id.vars=c('State', 'Region'))
   sorted_df <- getSorted(df, melted_df, sort_var1)
-  p <- ggplot(subset(sorted_df, sorted_df$variable %in% incVars), 
+  p <- ggplot(subset(sorted_df, sorted_df$variable %in% incVars & sorted_df$Region %in% highlight), 
               aes(x=State, y=variable))
   p <- p + geom_tile(aes(fill = value), colour = "white")
   p <- p + theme_minimal()
@@ -54,12 +55,21 @@ getSorted <- function (df, melted_df, sort_var1) {
 palette <- c("#008837", "#f7f7f7", "#f7f7f7", "#7b3294")
 midrange <- c(.3,.7)
 incVars <- c('Population', 'Income', 'Illiteracy')
-sortBy <- 'Illiteracy'
+sortBy <- 'Population'
+highlight <- 'South'
+highlight <- levels(state_data$Region)
 
-p <- getHeatmap(state_data, incVars, midrange, sortBy)
-#  let's focus on a heatmap - allow sorting by columns, also perhaps filter by region?
+p <- getHeatmap(state_data, incVars, midrange, sortBy, highlight)
+p
 #  scatter plot matrix - color/gray out selected region
 #  parallel coordinates - sort by columns, highlight by region
+#  scatter plot needs legend as well
+#  parallel coordinates, react to highight 
+#  parallel coordinates, allow user to reorder vars?
+#  heatmap - add conditional slider?
+#  heatmap - add conditional sort vars based on included vars?
+#  heatmap - color states based on region?
+#  heatmap - gray out states appropriately for highlighted regions
 
 
 #Sophie's example for inspiration

@@ -52,7 +52,8 @@ getHeatmap <- function (df, incVars, midrange, sort_var1, highlight) {
 }
 
 getScatter <- function (df, incVars, highlight) {
-  p <- ggpairs(subset(df, Region %in% highlight), 
+  p <- ggpairs(subset(df, Region %in% highlight),
+  legends = TRUE,
   # Columns to include in the matrix
   columns = c('Illiteracy', 'Murder', 'HSGrad', 'Frost'),
   #columns = incVars,
@@ -85,7 +86,16 @@ getScatter <- function (df, incVars, highlight) {
       # Add any ggplot2 settings you want
       inner = inner + theme(panel.grid = element_blank());
       inner <- inner + scale_color_manual(values = region_palette, limits=levels(df$Region))
-    
+      if (i == 1 && j == 1) {
+        inner <- inner + theme(legend.position=c(3.75,.5),
+                               legend.key.size = unit(2.5, "cm"),
+                               legend.title = element_text(size=12))
+      }
+      else {
+        inner <- inner + theme(legend.position='none')
+        
+      }
+      
       # Put it back into the matrix
       p <- putPlot(p, inner, i, j);
     }
@@ -102,23 +112,19 @@ getParallel <- function(df, incVars, highlight) {
   groupColumn = 'Region', 
   # Allows order of vertical bars to be modified
   order = "anyClass",                
-  # Do not show points
   showPoints = FALSE,
-  # Turn on alpha blending for dense plots
-  #alphaLines = 0.6,     
   # Turn off box shading range
   shadeBox = NULL,                
   # Will normalize each column's values to [0, 1]
   scale = "uniminmax", # try "std" also
   alphaLines = "alphaLevel",
-  #show_guide(alphaLines = FALSE)
   )
-  #p <- p + show_guide(linetype =   FALSE)
   p <- p + scale_y_continuous(expand = c(0.02, 0.02))
   p <- p + scale_x_discrete(expand = c(0.02, 0.02))
   p <- p + theme(axis.title = element_blank())
   p <- p + theme(legend.position = "bottom")
   p <- p + scale_color_manual(values = region_palette, limits=levels(df$Region))
+  p <- p + scale_alpha_continuous(guide="none")
   return(p)
 }
 

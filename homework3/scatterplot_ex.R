@@ -14,7 +14,7 @@ colnames(state_data) <- gsub("\\.", "", colnames(state_data))
 
 region_palette <- brewer_pal(palette='Dark2')(4)
 
-ggplot <- function(...) ggplot2::ggplot(...) + scale_color_continuous(values = region_palette)
+ggplot <- function(...) ggplot2::ggplot(...)
 
 
 # Create scatterplot matrix
@@ -54,6 +54,16 @@ for (i in 1:4) {
   # Put it back into the matrix
   p <- putPlot(p, inner, i, i);
 }
+
+test = getPlot(p, 1,4)
+test <- ggplot(state_data, aes(x=Region, fill=Region)) + geom_bar() +
+  geom_text(x=1, y=5, label='Northeast') +
+  geom_text(x=2, y=5, label='South') + 
+  geom_text(x=3, y=5, label='North Central') + 
+  geom_text(x=4, y=5, label='West') 
+test
+
+p <- putPlot(p, test, 1, 4)
 
 # Show the plot
 print(p)
