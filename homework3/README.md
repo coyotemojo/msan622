@@ -56,6 +56,8 @@ I think the plot is an immediately striking plot that, similar to the heatmap, d
 
 ### Interactivity ###
 
-![screenshot](screenshot.png)
+![screenshot](interactive.png)
 
-[DISCUSSION]
+I included quite a bit of interactivity in the plots.  First of all, I gave each plot its own tab, and I utilized conditional panels to adjust the available widgets depending on which tab the user selected.  So the interactivity varied a bit by plot but I did keep some of the settings of a few of the widgets consistent across the tabs.  Here is a list of interactive functions that I wove into the application:
+ - Heatmap
+   - The user can filter the heatmap by selecting a region (or all).  Only the states in that region will be displayed
