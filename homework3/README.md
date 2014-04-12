@@ -37,19 +37,20 @@ In terms of customization, I essentially removed all unnecessary markings, inclu
 
 In terms of what the plot reveals in the data, the initial view includes all columns and all regions, with the states ordered from top to bottom in increasing order of population.  I think the heatmap has an interesting visual impact overall that draws the viewer in to start playing with the interactive portions.  Initially, the main impact is to see how few high-population states there actually are.
 
-[DISCUSSION]
 
 ### Technique 2: Scatterplot Matrix ###
 
 ![technique2](scatter.png)
 
-[DISCUSSION]
+My second technique was the scatterplot matrix since I think this is an excellent tool for discovering underlying correlations within the data.  I felt that including all of the variables in this visualization would be overwhelming, so I examined the correlation matrix for the dataset and picked out what I felt were the most interesting highly correlated variables.  I colored the plots by region so that the viewer could get a sense of how the values for each variable changed by region.  I added the smoothing lines and confidence intervals so that the viewer could easily understand the apparent strength of the correlation between each pair of variables.  I also used my friend Manoj's technique for including a single legend in the plot since I felt that each plot did not need a legend, but the overall plot definitely needed one to indicate which region matched each color.  I also made sure to keep those colors consistent in the following plot on the next tab.
+
+I think that the scatter plot matrix immediatley communicates some interesting relationships between days of frost, high school graduation rates, illiteracy rates, and murder rates.  One (possible!) interpretation of the scatter plot matrix could be that students in colder parts of the country stay indoors more, study more, and graduate at higher rates.  Furthermore, higher murder rates are correlated with low high school graduation rates and higher illiteracy rates.   
 
 ### Technique 3: Parallel Coordinates Plot ###
 
 ![technique3](parallel.png)
 
-[DISCUSSION]
+For the third technique, I chose the
 
 ### Interactivity ###
 
