@@ -18,17 +18,23 @@ shinyUI(fluidPage
           c("All", "Northeast", "South", "North Central","West"),
           selected = "All"
         ),
-        #conditionalPanel(
-        #  condition = "input.tab == 'Heatmap' | input.tab== 'Parallel Coordinates'",
+        conditionalPanel(
+          condition = "input.tab == 'Heatmap' | input.tab== 'Parallel Coordinates'",
           checkboxGroupInput(
             "incVars",
             "Variables to include in plot:",
             c("Population", "Income", "Illiteracy", "LifeExp", "Murder", "HSGrad", "Frost", "Area"),
             selected = c("Population", "Income", "Illiteracy", "LifeExp", "Murder", "HSGrad", "Frost", "Area")
          )
-        #)
-      )
-    ),
+        ),
+        conditionalPanel(
+          condition = "input.tab == 'Scatterplot Matrix'",
+          br(),
+            helpText(paste("Use the region radio buttons above to explore the distributions and correlations of several key 
+                            variables across the various regions."))
+          )
+        )
+      ),
     column(9,
       tabsetPanel(
         tabPanel("Heatmap",plotOutput("heatMap")),
@@ -41,21 +47,21 @@ shinyUI(fluidPage
   fluidRow(
     column(3,
       conditionalPanel(
-        condition = "input.tab == 'Heatmap'",
+        condition = "input.tab == 'Heatmap'",     
         wellPanel(
-        radioButtons(
-              "sortVar",
-              "Variable to sort by:",
-              c("Population", "Income", "Illiteracy", "LifeExp", "Murder", "HSGrad", "Frost", "Area"),
-              selected = "Population"
-             ) 
+          selectInput(
+            "sortVar",
+            "Variable to sort by:",
+            c("Population", "Income", "Illiteracy", "LifeExp", "Murder", "HSGrad", "Frost", "Area"),
+            selected = "Population"
+          ) 
         )
       )
     ),
     column(9,
       conditionalPanel(
         condition = "input.tab == 'Heatmap'",
-        div("Low values are orange, mid values are white, and high values are blue.", align = "center"),     
+        div("Low values are orange, mid values are white, and high values are blue.", align = "center"),
         wellPanel(
           sliderInput(
             "range",

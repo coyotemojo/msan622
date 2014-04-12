@@ -38,7 +38,7 @@ getHeatmap <- function (df, incVars, midrange, sort_var1, highlight) {
   p <- p + theme(panel.grid = element_blank())
   p <- p + theme(legend.position = "none")
   p <- p + coord_flip()
-  #p <- p + ggtitle('')
+  p <- p + ggtitle("Heatmap of Values for Each State Across Selected Variables")
   palette <- c("#ef8a62", "#f7f7f7", "#f7f7f7", "#67a9cf")
   if(midrange[1] == midrange[2]) {
     # use a 3 color gradient instead
@@ -53,31 +53,17 @@ getHeatmap <- function (df, incVars, midrange, sort_var1, highlight) {
 
 getScatter <- function (df, incVars, highlight) {
   p <- ggpairs(subset(df, Region %in% highlight),
+  title="Scatterplot Matrix of a Selection of Highly Correlated Variables",
   legends = TRUE,
   # Columns to include in the matrix
-  columns = c('Illiteracy', 'Murder', 'HSGrad', 'Frost'),
-  #columns = incVars,
-               
-  # What to include above diagonal
-  # list(continuous = "points") to mirror
-  # "blank" to turn off
+  columns = c('Illiteracy', 'Murder', 'HSGrad', 'Frost'), 
   upper = "blank",
-               
-  # What to include below diagonal
   lower = list(continuous = "smooth"),
-               
-  # What to include in the diagonal
-  diag = list(discrete = "bar"),
-               
-  # How to label inner plots
-  # internal, none, show
+  diag = list(discrete = "density"),
   axisLabels = "none",
-               
-  # Other aes() parameters
-  colour = "Region",
+  colour = "Region"
   )
-  #p <- p + scale_color_manual(values = region_palette, limits=levels(df$Regions))
-
+                 
   for (i in 1:4) {
     for (j in 1:4) {
       # Get plot out of matrix
@@ -87,8 +73,8 @@ getScatter <- function (df, incVars, highlight) {
       inner = inner + theme(panel.grid = element_blank());
       inner <- inner + scale_color_manual(values = region_palette, limits=levels(df$Region))
       if (i == 1 && j == 1) {
-        inner <- inner + theme(legend.position=c(3.75,.5),
-                               legend.key.size = unit(2.5, "cm"),
+        inner <- inner + theme(legend.position=c(3.75,0),
+                               legend.key.size = unit(1.5, "cm"),
                                legend.title = element_text(size=12))
       }
       else {
@@ -121,8 +107,10 @@ getParallel <- function(df, incVars, highlight) {
   )
   p <- p + scale_y_continuous(expand = c(0.02, 0.02))
   p <- p + scale_x_discrete(expand = c(0.02, 0.02))
+  p <- p + ggtitle("Parallel Coordinates Plot for Each State Across Selected Variables")
   p <- p + theme(axis.title = element_blank())
-  p <- p + theme(legend.position = "bottom")
+  p <- p + theme(legend.position = "bottom",
+                 legend.key.size = unit(1.5, "cm"))
   p <- p + scale_color_manual(values = region_palette, limits=levels(df$Region))
   p <- p + scale_alpha_continuous(guide="none")
   return(p)
