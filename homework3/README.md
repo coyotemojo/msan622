@@ -60,4 +60,14 @@ I think the plot is an immediately striking plot that, similar to the heatmap, d
 
 I included quite a bit of interactivity in the plots.  First of all, I gave each plot its own tab, and I utilized conditional panels to adjust the available widgets depending on which tab the user selected.  So the interactivity varied a bit by plot but I did keep some of the settings of a few of the widgets consistent across the tabs.  Here is a list of interactive functions that I wove into the application:
  - Heatmap
-   - The user can filter the heatmap by selecting a region (or all).  Only the states in that region will be displayed
+   - The user can filter the heatmap by selecting a region (or all).  Only the states in that region will be displayed, but that selection will "follow" the viewer to the other tabs and also filter those plots by region in appropriate ways.
+   - The viewer can decide which variables to included in the heatmap, and these filters apply to the parallel coordinates plot as well on the 3rd tab
+   - The viewer can choose which column to use to sort the heatmap.  The column chosen as the sort column takes the leftmost position in the heatmap, allowing the user to immediately see how the states rank in that particular variable
+   - The viwer can use the color sliders to decided how to filter how the middle values
+ - Scatterplot Matrix
+   - If the user has chosen a region, the scatter plot matrix will display only the data from that particular region, so the user can examine the distribution and correlation of each pair of variables within each region and across all regions if he/she so chooses.  This is a nice example of overview coupled with available detail.
+ - Parallel Coordinates Plot
+   - The viewer can again decide which variables to show on the plot, or if the viewer has already chosen a subset of variables on the heatmap, that choice will carry over to the parallel coordinates plot.
+   - In terms of brushing, on the parallel coordinates plot if the user chooses a region, the states in that particular region will be drawn in a darker line while the lines of the other regions will fade into the background. This is a good  example of providing focus even while keeping the available context.
+ 
+In general, I wanted the viewer to want to spend some time investigating how the states varied across any variables of interest.  
