@@ -20,11 +20,33 @@ To run this code, please enter the following commands in R:
 
 ```
 library(shiny)
-shiny::runGitHub('msan622', 'coyotemojo', 'homework3')
+shiny::runGitHub('msan622', 'coyotemojo', subdir='homework3')
 ```
 
 This will start the `shiny` app. See below for details on how to interact with the visualization.
 
 ## Discussion ##
 
-[DISCUSSION: Include a discussion here if required by the assignment.]
+### Technique 1: Heatmap ###
+
+![technique1](heatmap.png)
+
+[DISCUSSION]
+
+### Technique 2: Scatterplot Matrix ###
+
+![technique2](scatter.png)
+
+[DISCUSSION]
+
+### Technique 3: Parallel Coordinates Plot ###
+
+![technique3](parallel.png)
+
+[DISCUSSION]
+
+### Interactivity ###
+
+![screenshot](screenshot.png)
+
+[DISCUSSION]
