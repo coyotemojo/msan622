@@ -11,7 +11,7 @@ Homework [#]: [HOMEWORK NAME]
 
 ## Discussion ##
 
-Phrase Net of Siddhartha
+Phrase Net of Siddhartha (I like the 'and' Phrase Net)
 http://www-958.ibm.com/software/analytics/labs/manyeyes/#vis=502929
 
 Phrase Net of Beyond Good and Evil (I like the 'and' Phrase Net)
