@@ -11,4 +11,6 @@ Homework [#]: [HOMEWORK NAME]
 
 ## Discussion ##
 
+http://www-958.ibm.com/software/analytics/labs/manyeyes/#vis=502929
+
 [DISCUSSION: Include a discussion here if required by the assignment.]
