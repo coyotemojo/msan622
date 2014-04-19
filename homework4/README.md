@@ -33,7 +33,7 @@ Following the frequency bar plots, I explored wordclouds, comparison clouds, and
 ###Word Frequency Differences###
 ![comparison cloud](comp_cloud.png)
 
-###Word Frequency Simlarities###
+###Word Frequency Similarities###
 ![commonality](commonality.png)
 
 I want to mention that at this point I noticed that there were quite a few word stems present in the cloud, and I felt that they were sort of distracting.  I playe with the idea of replacing the stems with a close, full word (ie "philosophi" could be replaced by "philosophy") but I decided that this would introduce more lie factor then necessary since the frequencies for each word would no longer be strictly accurate.  In the end, I decided to not stem the texts and just live with some duplication of similar words in the clouds as I felt this provided a truer view of the actual texts.
