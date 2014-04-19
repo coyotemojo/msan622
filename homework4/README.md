@@ -47,10 +47,15 @@ Finally, I chose dark blue for the common frequency word cloud and was again ple
 
 Lastly, I explored the Many Eyes tool to produce Phrase Nets for both texts:
 
-###Phrase Net of Siddhartha###
+###Phrase Net of Siddhartha###:
 http://www-958.ibm.com/software/analytics/labs/manyeyes/#vis=502929
 ![sid phrase](sid_phrase_net.png)
 
-Phrase Net of Beyond Good and Evil
+###Phrase Net of Beyond Good and Evil###:
 http://www-958.ibm.com/software/analytics/labs/manyeyes/#vis=502931
 ![bge phrase](bge_phrase_net.png)
+
+I enjoyed playing around with the Many Eyes tool and seeing which of the phrase relationships produced the most interesting visualizations for each text.  In the end, I decided that the "x the y" relation produced the most visually and conceptually interesting graph for "Siddhartha."  I especially liked that several key phrases, such as "heard the teachings," "reached the nirvana," and "overcame the suffering" were immediately visible as I felt that those were central themes in teh book.
+
+In contrast, I chose the "x of the y" relation for the "Beyond Good and Evil" graph.  That choice revealed "philosophers of the future," "elevation of the human," and "fear of the instinct/instinct of the populace."  All of these I thought truly presented a sense of what Nietzsche's work was all about.   
+
