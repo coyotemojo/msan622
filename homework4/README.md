@@ -10,6 +10,12 @@ Homework 4: Text Visualization
 - [`get_books.r`](get_books.r) loads the books, processes the text, and produces data frames for plotting
 - [`plots.r`](plots.r) code to produce two sets of plots - two bar plots with the most frequent words in each text, a comparison word cloud and a commonality word cloud.
 
+These packages are required to run the code above:
+- `ggplot2`
+- `tm`
+- `SnowballC`
+- `wordcloud`
+
 The load data code requires access to a local directory with the text of both books.
 
 
