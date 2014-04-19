@@ -30,10 +30,10 @@ I was pleasantly surprised by the way one can almost read the word from most fre
 
 Following the frequency bar plots, I explored wordclouds, comparison clouds, and commonality clouds in the wordcloud package.  I eventually decided that pairing a comparison cloud with a commonality cloud would be an interesting way to visualize the two texts:
 
--> ###Word Frequency Differences###  <-
+->Word Frequency Differences<-
 ![comparison cloud](comp_cloud.png)
 
--> ###Word Frequency Simlarities###  <-
+->Word Frequency Simlarities<-
 ![commonality](commonality.png)
 
 
