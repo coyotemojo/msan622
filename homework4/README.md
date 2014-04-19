@@ -28,6 +28,11 @@ I played with the number of words to feature for both and decided that 15 words 
 
 I was pleasantly surprised by the way one can almost read the word from most frequent to least, top to bottom, and nearly pick up little sentences for each plot that somewhat expressed the essence of both works.  For example, the plot for "Siddhartha" displays "siddhartha-one-time-like-govinda," which sort of mirrors Siddhartha's journey from seeker (like Govinda) to enlightened one.  In contrast, the "Beyond Good and Evil" plot reveals "something-new-always," which reflects Nietzsche's belief that a philosopher (or seeker of self-fulfillment) must constantly seek out new situations for self-discovery.  
 
+Following the frequency bar plots, I explored wordclouds, comparison clouds, and commonality clouds in the wordcloud package.  I eventually decided that pairing a comparison cloud with a commonality cloud would be an interesting way to visualize the two texts:
+
+![comparison cloud](comp_cloud.png)
+
+![commonality](commonality.png)
 
 
 
@@ -38,4 +43,3 @@ http://www-958.ibm.com/software/analytics/labs/manyeyes/#vis=502929
 Phrase Net of Beyond Good and Evil (I like the 'and' Phrase Net)
 http://www-958.ibm.com/software/analytics/labs/manyeyes/#vis=502931
 
-[DISCUSSION: Include a discussion here if required by the assignment.]
