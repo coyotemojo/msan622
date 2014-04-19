@@ -7,9 +7,17 @@ Homework [#]: [HOMEWORK NAME]
 
 ## Instructions ##
 
-[INSTRUCTIONS: Include instructions on how to run your code.]
+- [`get_books.r`](get_books.r) loads the books, processes the text, and produces data frames for plotting
+- [`plots.r`](plots.r) code to produce two sets of plots - two bar plots with the most frequent words in each text, a comparison word cloud and a commonality word cloud.
+
+The load data code requires access to a local directory with the text of both books.
+
 
 ## Discussion ##
+
+![siddhartha frequency plot](SidFreq.png)
+
+![bge frequency plot](BgeFreq.png)
 
 Phrase Net of Siddhartha (I like the 'and' Phrase Net)
 http://www-958.ibm.com/software/analytics/labs/manyeyes/#vis=502929
