@@ -47,11 +47,13 @@ Finally, I chose dark blue for the common frequency word cloud and was again ple
 
 Lastly, I explored the Many Eyes tool to produce Phrase Nets for both texts:
 
-###Phrase Net of Siddhartha###:
+###Phrase Net of Siddhartha###
+
 http://www-958.ibm.com/software/analytics/labs/manyeyes/#vis=502929
 ![sid phrase](sid_phrase_net.png)
 
-###Phrase Net of Beyond Good and Evil###:
+###Phrase Net of Beyond Good and Evil###
+
 http://www-958.ibm.com/software/analytics/labs/manyeyes/#vis=502931
 ![bge phrase](bge_phrase_net.png)
 
