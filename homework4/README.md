@@ -36,9 +36,16 @@ Following the frequency bar plots, I explored wordclouds, comparison clouds, and
 ###Word Frequency Simlarities###
 ![commonality](commonality.png)
 
+I want to mention that at this point I noticed that there were quite a few word stems present in the cloud, and I felt that they were sort of distracting.  I playe with the idea of replacing the stems with a close, full word (ie "philosophi" could be replaced by "philosophy") but I decided that this would introduce more lie factor then necessary since the frequencies for each word would no longer be strictly accurate.  In the end, I decided to not stem the texts and just live with some duplication of similar words in the clouds as I felt this provided a truer view of the actual texts.
+
+There aren't too many possible customizations that can be made in the wordcloud package that I could find.  For example, I might have preferred to remove the titles in the comparison cloud simply because the prominence of the word "siddhartha" makes clear which part of the cloud refers to "Siddhartha."  I did decide to make the title text relatively small as it was almost superfluous.  
+
+I was able to select colors for the cloud, so I chose two divergent colors from colorbrewer.  I wanted the colors to both be dark and bold but as divergent as possible.  I also liked mapping the more earthy, heartfelt "Siddhartha" to dark green and placing it on top while mapping the more cerebral "Beyond Good and Evil" to dark brown and placing its cloud on the bottom.   To me, the result suggested the leaves of a tree sitting on top of a trunk, which I tought was a pretty neat metaphor for the the different messages of the two texts.  
+
+Finally, I chose dark blue for the common frequency word cloud and was again pleasantly surprised by the central "one" given that the commonality cloud is a unity of both texts.  
 
 
-
+Lastly, I explored the Many Eyes tool to produce Phrase Nets for both texts:
 Phrase Net of Siddhartha (I like the 'and' Phrase Net)
 http://www-958.ibm.com/software/analytics/labs/manyeyes/#vis=502929
 
