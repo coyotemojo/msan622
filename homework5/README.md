@@ -20,6 +20,7 @@ To run this code, please enter the following commands in R:
 ```
 library(shiny)
 shiny::runGitHub('msan622', 'coyotemojo', subdir='homework5')
+```
 
 ## Discussion ##
 
