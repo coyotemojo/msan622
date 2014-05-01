@@ -1,10 +1,15 @@
 Project: Prototype
 ==============================
 
-| **Name**  | [YOUR NAME]  |
+| **Name**  | Jason Ament  |
 |----------:|:-------------|
-| **Email** | [USERNAME]@dons.usfca.edu |
+| **Email** | jeament@dons.usfca.edu |
 
 ## Discussion ##
 
-[DISCUSSION: Include a discussion here if required by the assignment.]
+The original dataset is here: http://grouplens.org/datasets/movielens/
+
+The prototype is currently hosted here: http://bit.ly/1iyKLDM
+
+
+
