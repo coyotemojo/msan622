@@ -15,7 +15,8 @@ The following packages must be installed prior to running this code:
 
 - `ggplot2`
 - `shiny`
-- `GGally`
+- `stringr`
+- `plyr`
 - `grid`
 - `reshape`
 - `scales`
@@ -72,13 +73,18 @@ This will start the `shiny` app. See below for details on how to interact with t
   
   In creating this visualization, I learned that in general the female raters in this dataset tended to rate movies higher across almost all genres.  I was also able to see that in general after the younges group, which tended to rate movies the highest, the older the rater, the higher the rating in most genres except for horror.  For horror movies older viewers tended to rate those movies lower.  Women tended to have wider ranges to their ratings.   Horror was the lowest rated genre while documentaries were the highest.
   
-###Technique 4 - Bubble Plot ###
+###Technique 4 - Bubbleplot + DataTable ###
 
 ![Bubbleplot](Bubbleplot.png)
 
  For my final technique, I attempted to create a bubble plot that reflected the user's demographic selections on the seletions lists alongside the plot.  The bubble plot displays movies based on how many ratings they have received and the mean of those ratings, colored by the decade of release and sized by the number of genres associated with the movie.  The bubble plot allows the user to explore movies rated highly (or poorly!)  within his/her demographic group, and using the table below the plot the viewer can locate potential movies of interest.  
  
- There is quite a bit of fudging going on in this plot that contributes to a higher lie factor.  For one, there is jitter so that the points don't completely overplot each other.  This results in movies not lining up precisely with their associated values.  I think the data density is fairly high as I tried to pack as much information into the bubble plot as possible.  In addition, there isn't a ton of extra ink, although the addition of the datatable adds quite a bit of additional ink to the page.
+ There is quite a bit of fudging going on in this plot that contributes to a higher lie factor.  For one, there is jitter so that the points don't completely overplot each other.  This results in movies not lining up precisely with their associated values.  I think the data density is fairly high as I tried to pack as much information into the bubble plot as possible.  The addition of the datatable adds quite a bit of additional ink to the page, so in an effort to try to minimize the damage to the data to ink ratio I decided not to include a plot title.  This is especially important since I had to add an annotation on the plot surface regarding the size of the bubbles.  I didn't want to also add a title to what is already a busy page.  My hope is that the description text on the sidebar along with the axis titles and legend convey the meaning of the plot.
+ 
+ The viewer can use this plot to see how movies tend to be rated within his/her demographic group.  In addition the viewer can see the decades and number of genres associated with movies of various average ratings and number of ratings.
+ 
+ I was able to use the recommender to see which movies were most highly rated by my peer group.  I discovered that 'Saving Private Ryan' is the most frequently highest rated movie in my peer group, which is interesting because I do like that movie.  In fact, I like almost all the movies that show up at the top of my list.  I also noticed that popular movies in terms of high rating tend to have more ratings, and that many of the top movies are recent releases.  Those are all useful insights for the dataset.
+ 
  
 ###Interactivity###
 
