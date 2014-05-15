@@ -12,12 +12,22 @@ My final proect consists of an exploration of the MovieLens 1M dataset, a set of
 
 ###Technique 1 - Heatmap###
 
+![Heatmap](heatmap.png)
+
+ For the first technique, I wanted to explore and visualize the frequency of movie genres within the dataset.  Each movie could be tagged with one or more of 18 distinct genres, and I wanted the viewer to be able to understand which genres occurred the most frequently, both as single genres and as instances of co-occurrence with other genres.  The co-occurence heatmap seemed to be a good choice to convey this information.  
+ 
+ To accomplish this effect, I encoded the data so that the movie data frame had columns for every single distinct genre.  I then looped through the dataset and searched for each single genre within the movie's complete genre descritpion, and if a single genre was present in the compelete genre column the matching single genre columns each receive a '1' to indicate presence of that genre.  Otherwise, the non-matching genres for that title received a '0'.  I therefore had a matrix of title and genres which I was able to use to create a 
   * How you encoded the data
   * Evaluation of lie factor, data density, and data to ink ratio
   * What visualization excels at
   * What you learned about the dataset as a result
 
 ###Technique 2 - Scatterplot ###
+
+  * How you encoded the data
+  * Evaluation of lie factor, data density, and data to ink ratio
+  * What visualization excels at
+  * What you learned about the dataset as a result
 
 ###Technique 3 - Small Multiples ###
 
