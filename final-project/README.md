@@ -38,17 +38,20 @@ My final proect consists of an exploration of the MovieLens 1M dataset, a set of
 
 ###Technique 3 - Small Multiples ###
 
-![Scatterplot](Scatterplot.png)
+![Scatterplot](Multiples.png)
 
  For my third technique, I chose a small multiples plot with boxplots and facets.  This visualization presents the distributions of mean star ratings for individual films within each genre, by age, genre, and gender.  
  
- Encoding the data for this plot was quite involved.  
+ Encoding the data for this plot was quite involved.  I had to summarize the data within the movie ratings file, essentially calculating the average rating for each movie, by gender and by age.  So the data frame had a single row for every combination of gender and age band for every movie, along with an associated average rating.  In addition, since there were 18 genres, I decided to find the top 9 genres and bucket everything else into an "other" genre.  I felt that 9 total genres was a decent tradeoff between accurately displaying the variability of ratings among genres while keeping the number of genres manageable.  I know that it is challenging to exceed 6 or 7 specific categories as pre-attentive attributes, but I felt like that was just too few to fully capture the variety of movies in the dataset.  I certainly wanted to see ratings for all of the obviously well-known genres.
 
-  * How you encoded the data
-  * Evaluation of lie factor, data density, and data to ink ratio
-  * What visualization excels at
-  * What you learned about the dataset as a result
-
+ As a result of the bucketing of movies into the 'other' genre when they're original genre wasn't in the top 9 most frequently occurring genres, there is some lie factor in the small multiples plot.  For example, all movies that had more than 2 genres originally fell into the 'other' bucket, since no combined genre made up of 3 or more genres was in the top 9 most frequently occurring genres. As a result, a drama/romance/thriller movie ends up in the 'other' bucket even though it might more accurately be considered similar to a  drama/romance movie.  
+ 
+ The data density and data to ink ratio are very high in this plot. The ratings for movies across the visible genres, by gender and by age are all identifiable in this plot.  In my opinion, there is a ton of information available in this single visualization. 
+ 
+  This visualization excels at giving the viewer perspective on how ratings tend to vary for particular genres across demographic profile.  The viewer can easily see how ratings for particular genres change across user age buckets.  In addition, the user can, with a little more difficulty, compare ratings within a genre across genders.  So it's possible to see how females tend to rate documentaries vs. males, by age.  Finally, it's easy to see how spread out those ratings are.  The boxplot excels at visualizing the median and range of a distribution.  All of that is readily apparent.
+  
+  In creating this visualization, I learned that in general the female raters in this dataset tended to rate movies higher across almost all genres.  I was also able to see that in general after the younges group, which tended to rate movies the highest, the older the rater, the higher the rating in most genres except for horror.  For horror movies older viewers tended to rate those movies lower.  Women tended to have wider ranges to their ratings.   Horror was the lowest rated genre while documentaries were the highest.
+  
 ###Technique 4 - Bubble Plot ###
 
 ###Interactivity###
@@ -70,6 +73,8 @@ My final proect consists of an exploration of the MovieLens 1M dataset, a set of
  
  As a result of the feedback, I completely removed the gridlines in the plot and replaced them with manually set vertical and horizontal lines occuring precisely between every axis label location.  This took me quite a while to figure out, but when I was done I had created individual cells for each intersection that perfectly held the dots for each user. Any confusion about location for each user was gone!  The result is sort of a scatterplot heatmap, but it seems to work well.  
  
+ I did not have a prototype of my small multiples avaiable for feedback, but I did have a user map that showed where in the U.S. the users were located.  This map was barely done however, so it didn't really generate much feedback other than some brainstorming on what to include in the plot.  In the end, I scrapped the map and decided to use a small multiples boxplot to visualize ratings by genre across demographic profile.
+ 
   * Description of prototype presented
   * Changes made based on feedback
   * Feedback you found helpful and why
@@ -77,7 +82,11 @@ My final proect consists of an exploration of the MovieLens 1M dataset, a set of
 
 ###Challenges###
 
- Once challenge I faced was that the genre occurence counts were very unbalanced.  For example, the most frequently occuring genre in the dataset was drama, which occurred much more frequently than film-noir.  As a result, I had to figure out a way to make the heatmap color diverse enough to be visually appealing and informative.  I played with a divergent color scheme and slider similar to what we did in class, hoping that by allowing the user to filter out large chunks of the data some of the interesting co-occuring cells would become more visible.  This did not work very well however, so I found that using a color gradient starting with white at the low end of the scale and giving the suer the ability to adjust the range with a slider worked much better.   This allows the user to explore the dataset and see the co-occuring genres pop out as the slider moves.  In generally, just creating the co-occurence matrix was a challenge as well, and it took me quite a while to work out the matrix math behind the scenes.
+ One challenge I faced with the heatmap was that the genre occurence counts were very unbalanced.  For example, the most frequently occuring genre in the dataset was drama, which occurred much more frequently than film-noir.  As a result, I had to figure out a way to make the heatmap color diverse enough to be visually appealing and informative.  I played with a divergent color scheme and slider similar to what we did in class, hoping that by allowing the user to filter out large chunks of the data some of the interesting co-occuring cells would become more visible.  This did not work very well however, so I found that using a color gradient starting with white at the low end of the scale and giving the suer the ability to adjust the range with a slider worked much better.   This allows the user to explore the dataset and see the co-occuring genres pop out as the slider moves.  In generally, just creating the co-occurence matrix was a challenge as well, and it took me quite a while to work out the matrix math behind the scenes.
+ 
+ For the scatterplot, I faced the challenge of getting rid of the confusion generated by the gridlines and location of the points around intersections of lines from the axes.  It wasn't perfectly clear which category each point was tied to, especially given the alpha and jitter I used to make the plot more legible.  What I finally discovered was that I could hide the gridlines and draw my own horizontal and vertical lines across the plot at defined intervals.  If I defined those intervals as being at half-steps along my axes, I ended up with lines that perfectly split the categories into 'cells' across the entire plot.  This turned out to work perfectly!  Each dot appears in the appropriate cell matching its x and y axis value, and the alpha and jitter both allow insight into overall count within the cell as well as gender density.  
+ 
+ I struggled mightily with the small multiples plot to try to find a balance between too many plots and too many groupings and too few.  I looked at plotting just mean ratings for movies within each genre by gender only, and while that plot was much simpler, in my opinion it did not have enough data density to be truly effective.  Likeweise, I played with looking at average ratings by gender across each each band as well but I felt the same way about that plot - simply not enough variety to make it visually interesting.  I even toyed with providing the user with some sort of control so that he/she could visualize the ratings in various simple ways.  But finally I just decided that by limiting the number of genres to 10 and faeting the plots as I did the viewer could make comparisons of ratings across genres, ages, and genders all at once, and ultimately that is really what I wanted to enable to user to do.  I played with 'facet_grid' and 'facet_wrap' for hours to try to get the cleanest, most accessible view of the data and I think that's what I ended up with.r
   * how you addressed
   * why you did not address
   * what would you have done with more time
