@@ -12,7 +12,7 @@ My final proect consists of an exploration of the MovieLens 1M dataset, a set of
 
 ###Technique 1 - Heatmap###
 
-![Heatmap](heatmap.png)
+![Heatmap](Heatmap.png)
 
  For the first technique, I wanted to explore and visualize the frequency of movie genres within the dataset.  Each movie could be tagged with one or more of 18 distinct genres, and I wanted the viewer to be able to understand which genres occurred the most frequently, both as single genres and as instances of co-occurrence with other genres.  The co-occurence heatmap seemed to be a good choice to convey this information.  
  
