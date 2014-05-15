@@ -9,6 +9,26 @@ Final Project
 
 My final proect consists of an exploration of the MovieLens 1M dataset, a set of 3 tables of data relating 1 million individual ratings by 6,000 users on 4,000 movies.  Full details and the dataset can be found [here.](http://grouplens.org/datasets/movielens/)
 
+### Instructions ###
+
+The following packages must be installed prior to running this code:
+
+- `ggplot2`
+- `shiny`
+- `GGally`
+- `grid`
+- `reshape`
+- `scales`
+
+To run this code, please enter the following commands in R:
+
+```
+library(shiny)
+shiny::runGitHub('msan622', 'coyotemojo', subdir='final-project')
+```
+
+This will start the `shiny` app. See below for details on how to interact with the visualization.
+
 
 ###Technique 1 - Heatmap###
 
@@ -53,6 +73,8 @@ My final proect consists of an exploration of the MovieLens 1M dataset, a set of
   In creating this visualization, I learned that in general the female raters in this dataset tended to rate movies higher across almost all genres.  I was also able to see that in general after the younges group, which tended to rate movies the highest, the older the rater, the higher the rating in most genres except for horror.  For horror movies older viewers tended to rate those movies lower.  Women tended to have wider ranges to their ratings.   Horror was the lowest rated genre while documentaries were the highest.
   
 ###Technique 4 - Bubble Plot ###
+
+![Bubbleplot](Bubbleplot.png)
 
  For my final technique, I attempted to create a bubble plot that reflected the user's demographic selections on the seletions lists alongside the plot.  The bubble plot displays movies based on how many ratings they have received and the mean of those ratings, colored by the decade of release and sized by the number of genres associated with the movie.  The bubble plot allows the user to explore movies rated highly (or poorly!)  within his/her demographic group, and using the table below the plot the viewer can locate potential movies of interest.  
  
