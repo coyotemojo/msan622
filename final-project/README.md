@@ -54,6 +54,9 @@ My final proect consists of an exploration of the MovieLens 1M dataset, a set of
   
 ###Technique 4 - Bubble Plot ###
 
+ For my final technique, I attempted to create a bubble plot that reflected the user's demographic selections on the seletions lists alongside the plot.  The bubble plot displays movies based on how many ratings they have received and the mean of those ratings, colored by the decade of release and sized by the number of genres associated with the movie.  The bubble plot allows the user to explore movies rated highly (or poorly!)  within his/her demographic group, and using the table below the plot the viewer can locate potential movies of interest.  
+ 
+ There is quite a bit of fudging going on in this plot that contributes to a higher lie factor.  For one, there is jitter so that the points don't completely overplot each other.  This results in movies not lining up precisely with their associated values.  I think the data density is fairly high as I tried to pack as much information into the bubble plot as possible.  In addition, there isn't a ton of extra ink, although the addition of the datatable adds quite a bit of additional ink to the page.
  
 ###Interactivity###
 
@@ -61,8 +64,7 @@ My final proect consists of an exploration of the MovieLens 1M dataset, a set of
  
  The user demographic distribution scatterplot provided the user with the ability to filter the scatterplot by gender, so that the viewer could compare demographics across genders.  While the viewer could sort of see this without the filter due to the alpha and jitter in the plot, I think the addition of the filter makes this exploration even clearer.  It is much easier to see the count of men vs. women when one is able to competely remove one and then the other from the plot area.  
  
-  * Type of interactivty
-  * How it enhances visualiation
+  The vision for the bubbleplot recommender was to allow the user to select his/her demographic from a list and then see which movies were recommended based on the ratings of similar users.  Therefore, all ratings information displayed on the bubbleplot (number of ratings, average rating, standard deviation) are based exclusively on users within that particular demoagraphic.  The datatable can also be sorted so that the viewer can look for movies that are most/least highly rated, have the most ratings, have the most/least disagreement, etc.  
 
 ###Prototype Feedback###
 
@@ -76,11 +78,8 @@ My final proect consists of an exploration of the MovieLens 1M dataset, a set of
  
  I did not have a prototype of my small multiples avaiable for feedback, but I did have a user map that showed where in the U.S. the users were located.  This map was barely done however, so it didn't really generate much feedback other than some brainstorming on what to include in the plot.  In the end, I scrapped the map and decided to use a small multiples boxplot to visualize ratings by genre across demographic profile.
  
-  * Description of prototype presented
-  * Changes made based on feedback
-  * Feedback you found helpful and why
-  * Feedback you did not agree with and why
-
+ I also did not really have a prototype of the bubble plot, but in general the feedback regarding the overall idea was fairly positive.  
+ 
 ###Challenges###
 
  One challenge I faced with the heatmap was that the genre occurence counts were very unbalanced.  For example, the most frequently occuring genre in the dataset was drama, which occurred much more frequently than film-noir.  As a result, I had to figure out a way to make the heatmap color diverse enough to be visually appealing and informative.  I played with a divergent color scheme and slider similar to what we did in class, hoping that by allowing the user to filter out large chunks of the data some of the interesting co-occuring cells would become more visible.  This did not work very well however, so I found that using a color gradient starting with white at the low end of the scale and giving the suer the ability to adjust the range with a slider worked much better.   This allows the user to explore the dataset and see the co-occuring genres pop out as the slider moves.  In generally, just creating the co-occurence matrix was a challenge as well, and it took me quite a while to work out the matrix math behind the scenes.
