@@ -38,6 +38,12 @@ My final proect consists of an exploration of the MovieLens 1M dataset, a set of
 
 ###Technique 3 - Small Multiples ###
 
+![Scatterplot](Scatterplot.png)
+
+ For my third technique, I chose a small multiples plot with boxplots and facets.  This visualization presents the distributions of mean star ratings for individual films within each genre, by age, genre, and gender.  
+ 
+ Encoding the data for this plot was quite involved.  
+
   * How you encoded the data
   * Evaluation of lie factor, data density, and data to ink ratio
   * What visualization excels at
