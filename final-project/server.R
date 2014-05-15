@@ -9,6 +9,17 @@ source('./movies.r')
 source('./users.r')
 source('./ratings.r')
 
+# create the big merged table
+top9_genres <- names(sort(table(movies$genre), decreasing=TRUE)[1:9])
+#merged <- merge(ratings, subset(movies, select = c(1:4)), by.x='movie_id', by.y='movie_id')
+merged <- merge(ratings, movies, by.x='movie_id', by.y='movie_id')
+merged <- merge(merged, users, by.x='user_id', by.y='user_id')
+merged <- ddply(merged, .(movie_id, gender, genre, age, cross_genre), summarize, avg_rating=mean(rating))
+merged$genre <- ifelse(merged$genre %in% top9_genres, merged$genre, 'Other')
+
+levels(merged$gender)[levels(merged$gender)=="F"] <- "Female"
+levels(merged$gender)[levels(merged$gender)=="M"] <- "Male"
+
 getTopGenres <- function(df, limit=1) {
   cooc_matrix <- data.frame(crossprod(as.matrix(df[,genres]), as.matrix(df[,genres])))
   names(cooc_matrix) <- genres
