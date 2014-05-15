@@ -93,3 +93,13 @@ My final proect consists of an exploration of the MovieLens 1M dataset, a set of
  Finally I decided to calculate the number of genres associated with each particular movie as a variable.  I mapped this to the size of the bubble.  I wanted to convey that as possibly an indication of complexity of the movie, since a movie with multiple genres associated with it might be somewhat more unique than a movie with only a single genre.  In addition, I cut the individual movie release years into categorical variables for decades to map to color in the bubble plot.  This provided the viewer with the abilit to match movies in the plot to the relative age of the movie by decade.  I thought this was a decent solution to the problem.
  
  If I had more time, I would have built out the functionality a little bit more on the bubble plot/recommendation engine.   What I really wanted to do was have the viewer select his/her demographic profile and rate a few representative movies, then use that information to create recommendations based on collaborative filtering techniques.  This might have allowed me to display some sort of clustering visualization showing the user where/how he/she related to the other users in the database.  
+
+ I also would have liked to allowed the user to drill down into the bubble plot.  I think I could have used a overview bubble plot below the focus bubble plot, so that as the user drilled down into the plot (say by requiring more than 10 ratings and an > 4 average rating) the overview bubble plot could show a rectangle denoting where the detiail plot was focused, similar to what we did on the time series assignment.  Furthermore, once the user had identified a specific region of the bubble plot to 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
